@@ -18,7 +18,6 @@ Base * generate(void)
 
 void identify(Base* p)
 {
-    std::cout << "ptr one\n";
     A *identify_a;
     B *identify_b;
     C *identify_c;
@@ -38,29 +37,27 @@ void identify(Base* p)
 
 void identify(Base& p)
 {
-    std::cout << "reference one\n";
-    A identify_a;
-    B identify_b;
-    C identify_c;
-
     try
     {
-        identify_a = dynamic_cast <A&> (p);
+        A &identify_a = dynamic_cast <A&> (p);
         std::cout << "A\n";
+		(void)identify_a;
     }
     catch(const std::exception& e)
     {
         try
         {
-            identify_b = dynamic_cast <B&> (p);
+            B &identify_b = dynamic_cast <B&> (p);
             std::cout << "B\n";
+			(void)identify_b;
         }
         catch(const std::exception& e)
         {
             try
             {
-                identify_c = dynamic_cast <C&> (p);
+                C &identify_c = dynamic_cast <C&> (p);
                 std::cout << "C\n";
+				(void)identify_c;
             }
             catch(const std::exception& e)
             {
