@@ -23,7 +23,7 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter& copy)
 
 int	type_is_char(std::string &name)
 {
-	if (name.length() == 1 && ((name[0] >= 'a' && name[0] <= 'z') || (name[0] >= 'A' && name[0] <= 'Z')))
+	if (name.length() == 1 && name[0] >= 33 && name[0] <= 126)
 		return (1);
 	return (0);
 }
@@ -117,7 +117,12 @@ void	convert_from_number(std::string &name)
 	else
 		sign_type = 0;
 	value = std::atoi(name.c_str());
-    if (value >= 0 && value <= 127)
+	if (std::count(name.begin(), name.end(), '.') > 1 || name.find('.') == name.length() - 1)
+    {
+		std::cout << "Invalid Input!\n";
+		return ;
+	}
+	if (value >= 0 && value <= 127)
     {
         if ((value >= 0 && value <= 31) || value == 127)
             std::cout << "char: Non Displayable\n";
