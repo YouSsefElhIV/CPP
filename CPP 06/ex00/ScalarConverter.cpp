@@ -117,7 +117,7 @@ void	convert_from_number(std::string &name)
 	else
 		sign_type = 0;
 	value = std::atoi(name.c_str());
-	if (std::count(name.begin(), name.end(), '.') > 1 || name.find('.') == name.length() - 1)
+	if (std::count(name.begin(), name.end(), '.') > 1 || name.find('.') == name.length() - 1
     {
 		std::cout << "Invalid Input!\n";
 		return ;
